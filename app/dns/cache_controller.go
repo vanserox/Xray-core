@@ -133,9 +133,7 @@ func (c *CacheController) findIPsForDomain(domain string, option dns_feature.IPO
 		if !mergeReq || go_errors.Is(err, errRecordNotFound) {
 			return ips, ttl, err
 		}
-		if ttl < rTTL {
-			rTTL = ttl
-		}
+		rTTL = ttl
 		if len(ips) > 0 {
 			allIPs = append(allIPs, ips...)
 		} else {
@@ -148,9 +146,7 @@ func (c *CacheController) findIPsForDomain(domain string, option dns_feature.IPO
 		if !mergeReq || go_errors.Is(err, errRecordNotFound) {
 			return ips, ttl, err
 		}
-		if ttl < rTTL {
-			rTTL = ttl
-		}
+		rTTL = ttl
 		if len(ips) > 0 {
 			allIPs = append(allIPs, ips...)
 		} else {

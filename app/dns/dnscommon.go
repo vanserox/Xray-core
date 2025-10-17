@@ -214,9 +214,7 @@ L:
 			ttl = 1
 		}
 		expire := now.Add(time.Duration(ttl) * time.Second)
-		if ipRecord.Expire.After(expire) {
-			ipRecord.Expire = expire
-		}
+		ipRecord.Expire = expire
 
 		switch ah.Type {
 		case dnsmessage.TypeA:

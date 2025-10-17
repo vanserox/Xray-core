@@ -211,7 +211,7 @@ func (s *TCPNameServer) QueryIP(ctx context.Context, domain string, option dns_f
 	} else {
 		ips, ttl, err := s.cacheController.findIPsForDomain(fqdn, option)
 		if !go_errors.Is(err, errRecordNotFound) {
-			errors.LogWarningInner(ctx, err, s.Name(), " cache HIT ", domain, " -> ", ips, " TTTTTTTL ", ttl)
+			errors.LogDebugInner(ctx, err, s.Name(), " cache HIT ", domain, " -> ", ips, " TTTTTTTL ", ttl)
 			log.Record(&log.DNSLog{Server: s.Name(), Domain: domain, Result: ips, Status: log.DNSCacheHit, Elapsed: 0, Error: err})
 			return ips, ttl, err
 		}
